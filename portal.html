@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Cabinet | ELP Markets | Live Trading Dashboard</title>
+    <meta name="robots" content="noindex, nofollow" />
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+        /* Specific Dashboard Portal styling overrides */
+        body {
+            background-color: #060709;
+            min-height: 100vh;
+        }
+        
+        .portal-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: 100vh;
+        }
+        
+        @media (max-width: 991px) {
+            .portal-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Portal Sidebar */
+        .portal-sidebar {
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-light);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        @media (max-width: 991px) {
+            .portal-sidebar {
+                display: none; /* Can slide over or be toggled on mobile */
+            }
+        }
+        
+        .portal-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .portal-nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            text-align: left;
+            width: 100%;
+        }
+        
+        .portal-nav-btn:hover, .portal-nav-btn.active {
+            background-color: var(--primary-glow);
+            color: var(--primary);
+        }
+        
+        .portal-nav-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+        
+        /* Portal Content Area */
+        .portal-main {
+            padding: 40px;
+            overflow-y: auto;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .portal-main {
+                padding: 20px;
+            }
+        }
+        
+        .portal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 24px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .user-greeting h1 {
+            font-size: 1.75rem;
+        }
+        
+        .user-greeting p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        /* Stats Panel */
+        .portal-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            position: relative;
+        }
+        
+        .stat-card-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .stat-card-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-family: var(--font-heading);
+        }
+        
+        .stat-card-value.highlight {
+            color: var(--primary);
+        }
+
+        /* Chart & Account Action Panel */
+        .portal-content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 1024px) {
+            .portal-content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .chart-box {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .chart-frame-wrap {
+            flex-grow: 1;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            background-color: #131722;
+        }
+
+        /* Action Forms (Deposit/Withdraw) */
+        .action-box {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .tab-headers {
+            display: flex;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 24px;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-secondary);
+            border-bottom: 2px solid transparent;
+            transition: var(--transition-fast);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .portal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .portal-form label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+        
+        .portal-input {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            color: var(--text-primary);
+            width: 100%;
+        }
+        
+        .portal-input:focus {
+            border-color: var(--primary);
+        }
+        
+        /* Accounts list */
+        .accounts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .accounts-table th, .accounts-table td {
+            text-align: left;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .accounts-table th {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        
+        .accounts-table td {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+        
+        .accounts-table tr:hover {
+            background-color: rgba(255,255,255,0.01);
+        }
+        
+        .badge-status {
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .badge-status.active {
+            background-color: var(--success-glow);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        /* Custom alert notification toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--primary);
+            border-radius: var(--radius-md);
+            padding: 16px 24px;
+            color: var(--text-primary);
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portal-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar">
+            <a href="index.html" class="logo">
+                <div class="logo-symbol">E</div>
+                <div class="logo-text">ELP<span>Markets</span></div>
+            </a>
+            
+            <nav class="portal-nav">
+                <div class="portal-nav-btn active">
+                    <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                    Dashboard
+                </div>
+                <div class="portal-nav-btn" onclick="switchTab('deposit')">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm-8 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>
+                    Deposit Funds
+                </div>
+                <div class="portal-nav-btn" onclick="switchTab('withdraw')">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+                    Withdraw Funds
+                </div>
+                <div class="portal-nav-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    Trading Settings
+                </div>
+                <a href="index.html" class="portal-nav-btn" style="margin-top: auto;">
+                    <svg viewBox="0 0 24 24"><path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+                    Logout Panel
+                </a>
+            </nav>
+        </aside>
+        
+        <!-- Main Panel Content -->
+        <main class="portal-main">
+            
+            <!-- Header bar -->
+            <div class="portal-header">
+                <div class="user-greeting">
+                    <h1>Welcome Back, Akram Majed</h1>
+                    <p>Client ID: #ELP-837429 (Corporate VIP Tier)</p>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <a href="index.html" class="btn btn-secondary btn-sm">Home Website</a>
+                    <a href="contact.html" class="btn btn-outline btn-sm">Support Tickets</a>
+                </div>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="portal-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-label">Account Balance</div>
+                    <div id="portal-balance" class="stat-card-value highlight">$54,320.12</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-label">Equity</div>
+                    <div class="stat-card-value">$54,580.45</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-label">Free Margin</div>
+                    <div class="stat-card-value">$51,240.00</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-label">Margin Level</div>
+                    <div class="stat-card-value">1,482.50%</div>
+                </div>
+            </div>
+            
+            <!-- Chart & Tab Actions -->
+            <div class="portal-content-grid">
+                
+                <!-- Advanced Charting using TradingView Widget -->
+                <div class="chart-box">
+                    <div class="chart-header">
+                        <h2 style="font-size: 1.25rem;">Live Market Analytics</h2>
+                        <span class="badge" style="margin-bottom: 0;">MT5 Liquidity Feed</span>
+                    </div>
+                    
+                    <div class="chart-frame-wrap">
+                        <!-- TradingView Widget Iframe Integration -->
+                        <div class="tradingview-widget-container" style="width: 100%; height: 400px;">
+                            <iframe id="tradingview-frame" style="width: 100%; height: 100%; border: none;" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview-frame&symbol=FX%3AEURUSD&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=1&timezone=exchange&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=en&utm_source=elpmarkets.com&utm_medium=widget&utm_campaign=chart-embed"></iframe>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Transactions Panel -->
+                <div class="action-box">
+                    <div>
+                        <div class="tab-headers">
+                            <div id="tab-btn-deposit" class="tab-btn active" onclick="switchTab('deposit')">Deposit</div>
+                            <div id="tab-btn-withdraw" class="tab-btn" onclick="switchTab('withdraw')">Withdraw</div>
+                        </div>
+                        
+                        <!-- Deposit Pane -->
+                        <div id="pane-deposit" class="tab-pane active">
+                            <form id="deposit-form" class="portal-form" onsubmit="handleDeposit(event)">
+                                <div class="form-group">
+                                    <label for="dep-amount">Amount (USD)</label>
+                                    <input type="number" id="dep-amount" class="portal-input" placeholder="1000.00" min="10" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="dep-method">Payment Gateway</label>
+                                    <select id="dep-method" class="portal-input">
+                                        <option value="wire">Bank Wire Transfer</option>
+                                        <option value="usdt">Tether (USDT TRC20)</option>
+                                        <option value="card">Visa/Mastercard Secured</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Process Deposit</button>
+                            </form>
+                        </div>
+                        
+                        <!-- Withdraw Pane -->
+                        <div id="pane-withdraw" class="tab-pane">
+                            <form id="withdraw-form" class="portal-form" onsubmit="handleWithdraw(event)">
+                                <div class="form-group">
+                                    <label for="with-amount">Amount (USD)</label>
+                                    <input type="number" id="with-amount" class="portal-input" placeholder="500.00" min="10" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="with-address">Receiving Bank IBAN or USDT Address</label>
+                                    <input type="text" id="with-address" class="portal-input" placeholder="USDT TRC20 address or Bank IBAN" required />
+                                </div>
+                                <button type="submit" class="btn btn-outline" style="width: 100%; margin-top: 10px;">Request Withdrawal</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Leverage Adjustment Widget -->
+                    <div style="border-top: 1px solid var(--border-light); padding-top: 20px; margin-top: 20px;">
+                        <h3 style="font-size: 1rem; margin-bottom: 15px;">Account Leverage</h3>
+                        <div class="form-group">
+                            <input type="range" id="leverage-range" min="100" max="400" step="100" value="200" style="width: 100%; cursor: pointer;" oninput="updateLeverageLabel(this.value)" />
+                            <div class="flex-between" style="font-size: 0.85rem; margin-top: 8px;">
+                                <span>Active Leverage: <strong id="leverage-val" class="text-gold">1:200</strong></span>
+                                <button class="text-gold" style="font-weight: 600; cursor: pointer;" onclick="saveLeverage()">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Active Accounts Ledger -->
+            <div class="glass-card" style="padding: 30px;">
+                <h2 style="font-size: 1.25rem;">MetaTrader 5 &amp; Vertex Accounts</h2>
+                <table class="accounts-table">
+                    <thead>
+                        <tr>
+                            <th>Account Login</th>
+                            <th>Platform</th>
+                            <th>Type</th>
+                            <th>Leverage</th>
+                            <th>Balance</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>9083742</td>
+                            <td>MetaTrader 5</td>
+                            <td>Live VIP ECN</td>
+                            <td id="table-leverage">1:200</td>
+                            <td id="table-balance">$54,320.12</td>
+                            <td><span class="badge-status active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>1087342</td>
+                            <td>Vertex FX 11</td>
+                            <td>Demo Practice</td>
+                            <td>1:400</td>
+                            <td>$50,000.00</td>
+                            <td><span class="badge-status active">Active</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </main>
+        
+    </div>
+
+    <!-- Alert Toast Notification -->
+    <div id="portal-toast" class="toast">
+        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--primary);"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        <span id="toast-message">Action processed successfully</span>
+    </div>
+
+    <script>
+        // Track balance values in local storage
+        let accountBalance = parseFloat(localStorage.getItem('elp_balance')) || 54320.12;
+        let activeLeverage = localStorage.getItem('elp_leverage') || '1:200';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            updateBalanceUI();
+            
+            // Set initial leverage input
+            const leverageVal = activeLeverage.split(':')[1];
+            document.getElementById('leverage-range').value = leverageVal;
+            document.getElementById('leverage-val').textContent = activeLeverage;
+            document.getElementById('table-leverage').textContent = activeLeverage;
+        });
+        
+        function updateBalanceUI() {
+            const formatted = `$${accountBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            document.getElementById('portal-balance').textContent = formatted;
+            document.getElementById('table-balance').textContent = formatted;
+            localStorage.setItem('elp_balance', accountBalance.toFixed(2));
+        }
+
+        // Switch Action Tabs (Deposit vs Withdraw)
+        function switchTab(action) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+            
+            if (action === 'deposit') {
+                document.getElementById('tab-btn-deposit').classList.add('active');
+                document.getElementById('pane-deposit').classList.add('active');
+            } else {
+                document.getElementById('tab-btn-withdraw').classList.add('active');
+                document.getElementById('pane-withdraw').classList.add('active');
+            }
+        }
+        
+        // Form submissions
+        function handleDeposit(e) {
+            e.preventDefault();
+            const amount = parseFloat(document.getElementById('dep-amount').value);
+            if (amount > 0) {
+                accountBalance += amount;
+                updateBalanceUI();
+                showToast(`Deposited $${amount.toFixed(2)} successfully via gateway.`);
+                document.getElementById('deposit-form').reset();
+            }
+        }
+        
+        function handleWithdraw(e) {
+            e.preventDefault();
+            const amount = parseFloat(document.getElementById('with-amount').value);
+            if (amount > 0) {
+                if (amount > accountBalance) {
+                    showToast("Error: Insufficient balance for withdrawal.", true);
+                    return;
+                }
+                accountBalance -= amount;
+                updateBalanceUI();
+                showToast(`Withdrawal of $${amount.toFixed(2)} requested successfully.`);
+                document.getElementById('withdraw-form').reset();
+            }
+        }
+        
+        // Leverage range
+        function updateLeverageLabel(val) {
+            document.getElementById('leverage-val').textContent = `1:${val}`;
+        }
+        
+        function saveLeverage() {
+            const val = document.getElementById('leverage-range').value;
+            activeLeverage = `1:${val}`;
+            localStorage.setItem('elp_leverage', activeLeverage);
+            document.getElementById('table-leverage').textContent = activeLeverage;
+            showToast(`Leverage updated to ${activeLeverage} successfully.`);
+        }
+        
+        // Toast notifications
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('portal-toast');
+            const msgSpan = document.getElementById('toast-message');
+            msgSpan.textContent = message;
+            
+            if (isError) {
+                toast.style.borderColor = '#ef4444';
+            } else {
+                toast.style.borderColor = '#d2a04b';
+            }
+            
+            toast.style.display = 'flex';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

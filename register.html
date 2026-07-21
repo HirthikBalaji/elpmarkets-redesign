@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open Trading Account | ELP Markets | Secure Registration</title>
+    <meta name="description" content="Register your trading profile with ELP Markets. Open a Live ECN Account or a practice Demo Account with institutional access." />
+    
+    <!-- Meta tags for SEO & Social Media sharing -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Open Trading Account | ELP Markets | Secure Registration" />
+    <meta property="og:description" content="Secure digital application desk for ELP Markets. Join in 3 easy steps and gain access to MT5 & Vertex platform suites." />
+    <meta property="og:url" content="https://www.elpmarkets.com/register/" />
+    <meta property="og:site_name" content="ELP Markets" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+        body {
+            background-color: #060709;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        
+        .register-container {
+            max-width: 600px;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(22, 26, 35, 0.7) 0%, rgba(12, 14, 18, 0.9) 100%);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 45px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        @media (max-width: 576px) {
+            .register-container {
+                padding: 25px;
+            }
+        }
+        
+        .register-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        
+        .register-header h1 {
+            font-size: 1.8rem;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .register-header p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+        
+        .form-control {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            color: var(--text-primary);
+            width: 100%;
+            transition: var(--transition-fast);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+        
+        .terms-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        
+        .terms-check input {
+            margin-top: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="register-container">
+        <div class="register-header">
+            <a href="index.html" class="logo" style="justify-content: center;">
+                <div class="logo-symbol">E</div>
+                <div class="logo-text">ELP<span>Markets</span></div>
+            </a>
+            <h1>Open Secure Account</h1>
+            <p>Complete your regulatory credentials to access trading terminals</p>
+        </div>
+        
+        <form class="register-form" onsubmit="handleRegistration(event)">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="reg-first">First Name</label>
+                    <input type="text" id="reg-first" class="form-control" placeholder="John" required />
+                </div>
+                <div class="form-group">
+                    <label for="reg-last">Last Name</label>
+                    <input type="text" id="reg-last" class="form-control" placeholder="Doe" required />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="reg-email">Email Address</label>
+                <input type="email" id="reg-email" class="form-control" placeholder="john.doe@email.com" required />
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="reg-type">Account Type</label>
+                    <select id="reg-type" class="form-control">
+                        <option value="live">Live VIP Account ($1,000 Starting)</option>
+                        <option value="demo">Demo Practice Account ($50,000 Practice)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reg-leverage">Initial Leverage</label>
+                    <select id="reg-leverage" class="form-control">
+                        <option value="1:100">1:100</option>
+                        <option value="1:200" selected>1:200</option>
+                        <option value="1:300">1:300</option>
+                        <option value="1:400">1:400</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="reg-pass">Secure Account Password</label>
+                <input type="password" id="reg-pass" class="form-control" placeholder="••••••••" minlength="6" required />
+            </div>
+            
+            <label class="terms-check">
+                <input type="checkbox" required />
+                <span>I confirm that I have read and agree to the FSC Mauritius compliance terms, Risk Disclosures, and Client Agreement policies.</span>
+            </label>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 15px;">Create Trading Account</button>
+            
+            <div style="text-align: center; font-size: 0.85rem; margin-top: 15px; color: var(--text-muted);">
+                Already have an account? <a href="portal.html" class="text-gold" style="font-weight: 600;">Log in here</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function handleRegistration(e) {
+            e.preventDefault();
+            
+            const first = document.getElementById('reg-first').value;
+            const last = document.getElementById('reg-last').value;
+            const email = document.getElementById('reg-email').value;
+            const type = document.getElementById('reg-type').value;
+            const leverage = document.getElementById('reg-leverage').value;
+            
+            // Set values in LocalStorage to mock database entry
+            localStorage.setItem('elp_username', `${first} ${last}`);
+            localStorage.setItem('elp_email', email);
+            localStorage.setItem('elp_leverage', leverage);
+            
+            const balance = type === 'demo' ? 50000.00 : 1000.00;
+            localStorage.setItem('elp_balance', balance.toFixed(2));
+            
+            // Redirect immediately to Portal Dashboard
+            window.location.href = 'portal.html';
+        }
+    </script>
+</body>
+</html>

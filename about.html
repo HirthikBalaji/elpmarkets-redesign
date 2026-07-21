@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | ELP Markets | Corporate Legacy & Regulations</title>
+    <meta name="description" content="Learn about the corporate history, leadership team, and Financial Services Commission (FSC) regulation of Ellipsys Financial Markets (ELP Markets)." />
+    
+    <!-- Meta tags for SEO & Social Media sharing -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="About Us | ELP Markets | Corporate Legacy & Regulations" />
+    <meta property="og:description" content="Discover our history of excellence. Learn about ELP Markets' operational philosophy, team integrity, and strict code of ethics." />
+    <meta property="og:url" content="https://www.elpmarkets.com/about-us/" />
+    <meta property="og:site_name" content="ELP Markets" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+        /* Specific inner page styling */
+        .page-header {
+            padding: 140px 0 60px 0;
+            background: linear-gradient(180deg, #08090a 0%, #0c0e12 100%);
+            border-bottom: 1px solid var(--border-light);
+            text-align: center;
+        }
+        
+        .breadcrumbs {
+            display: inline-flex;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+        
+        .breadcrumbs a {
+            color: var(--text-secondary);
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--primary);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        @media (max-width: 991px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        .about-content h2 {
+            margin-bottom: 24px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .license-card {
+            border: 1px solid var(--border-glow);
+            background-color: var(--primary-glow);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-top: 30px;
+        }
+        
+        .license-card h4 {
+            color: var(--primary);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+        
+        .license-card p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .video-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-lg);
+            background-color: var(--bg-tertiary);
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+        
+        .video-wrapper iframe,
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Timeline Section */
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 30px;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 5px;
+            width: 2px;
+            height: 100%;
+            background-color: var(--border-light);
+        }
+        
+        .timeline-event {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .timeline-event:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 5px;
+            left: -30px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--bg-primary);
+            border: 2px solid var(--primary);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .timeline-year {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-family: var(--font-heading);
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+        
+        .timeline-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scrolling Ticker Tape -->
+    <section class="ticker-tape-container" aria-label="Live Market Rates">
+        <div class="ticker-tape-wrapper">
+            <div class="ticker-scroll">
+                <!-- Ticker items dynamically injected by app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Header Navigation -->
+    <header class="header" role="banner">
+        <div class="container flex-between">
+            <a href="index.html" class="logo" aria-label="ELP Markets Home">
+                <div class="logo-symbol">E</div>
+                <div class="logo-text">ELP<span>Markets</span></div>
+            </a>
+            
+            <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="nav-item-dropdown">
+                    <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Markets</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Forex Trading</a>
+                        <a href="#" class="dropdown-item">CFD Indices</a>
+                        <a href="#" class="dropdown-item">Commodities</a>
+                        <a href="#" class="dropdown-item">Futures Markets</a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Platforms</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">MetaTrader 5</a>
+                        <a href="#" class="dropdown-item">Vertex FX 11</a>
+                        <a href="#" class="dropdown-item">Zen Trader Web</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link active">About Us</a>
+                <a href="compliance.html" class="nav-link">Regulatory Information</a>
+            </nav>
+            
+            <div class="header-ctas">
+                <a href="portal.html" class="btn btn-secondary btn-sm" aria-label="Login to Client Portal">Portal Login</a>
+                <a href="register.html" class="btn btn-primary btn-sm" aria-label="Open a Live Account">Open Account</a>
+            </div>
+            
+            <button class="mobile-nav-toggle" aria-label="Open mobile menu" aria-controls="mobile-nav-menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Panel Navigation -->
+    <div id="mobile-nav-menu" class="mobile-nav" aria-label="Mobile Navigation">
+        <button class="mobile-nav-close" aria-label="Close mobile menu">&times;</button>
+        <nav class="mobile-menu">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="#" class="mobile-link">Forex & CFDs</a>
+            <a href="#" class="mobile-link">Trading Platforms</a>
+            <a href="about.html" class="mobile-link">About Us</a>
+            <a href="compliance.html" class="mobile-link">Regulations</a>
+        </nav>
+        <div class="mobile-ctas">
+            <a href="portal.html" class="btn btn-secondary">Portal Login</a>
+            <a href="register.html" class="btn btn-primary">Open Account</a>
+        </div>
+    </div>
+    <div class="overlay"></div>
+
+    <main id="main-content" role="main">
+        
+        <!-- Page Title & Breadcrumbs -->
+        <section class="page-header">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>About Us</span>
+                </div>
+                <h1>Corporate Legacy & Values</h1>
+            </div>
+        </section>
+
+        <!-- About Ellipsys Section -->
+        <section class="section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content animate-on-scroll">
+                        <span class="badge">Operational Philosophy</span>
+                        <h2>About Ellipsys Financial Markets</h2>
+                        <p>At Ellipsys (ELP Markets), we offer services that provide seamless opportunities for our clients to participate and benefit in the Global Currencies, Commodities, and CFDs markets at the push of a button.</p>
+                        <p>Technology being a major parameter coupled with customized client services is what drives the Ellipsys Team. We follow a strict code of ethics and industry standard practices, offering traders from across the globe the resources and execution models needed to navigate the financial markets with ease.</p>
+                        
+                        <div class="license-card">
+                            <h4>FSC Mauritius Licensed & Regulated</h4>
+                            <p>Licensed as a GBL/Category 1 Investment Dealer (Full Service Dealer, excluding underwriting), pursuant to Section 29 of the Securities Act 2005, Rule 4 of the Securities Rule 2007 and Financial Services Rules 2008. (License No: C111010125).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="animate-on-scroll delay-200">
+                        <div class="video-wrapper">
+                            <!-- Responsive HTML5 video setup with backup abstract vector layout -->
+                            <video src="http://23.235.219.250/~n780566/wp-content/uploads/2026/06/about-elp-markets-1.mp4" controls autoplay loop muted></video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Credentials & Values -->
+        <section class="section section-bg-secondary">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="badge">Legacy Roadmap</span>
+                    <h2>Our Journey of Reliability</h2>
+                    <p>Over the last 15 years, we have scaled our ECN execution capabilities and solidified our reputation for transaction integrity.</p>
+                </div>
+                
+                <div class="timeline-container animate-on-scroll">
+                    <!-- Event 1 -->
+                    <div class="timeline-event">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2011</div>
+                        <div class="timeline-content">
+                            <h3>Corporate Inception</h3>
+                            <p>Ellipsys Financial Markets was established and acquired its GBL Investment Dealer license from the Financial Services Commission (FSC) Mauritius, laying down a strict compliance foundation.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 2 -->
+                    <div class="timeline-event">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2017</div>
+                        <div class="timeline-content">
+                            <h3>Liquidity Expansion</h3>
+                            <p>Integrated Equinix ECN data routing pipelines with Tier-1 investment bank liquidity pools, bringing direct institutional market spreads to retail accounts.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 3 -->
+                    <div class="timeline-event">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2026</div>
+                        <div class="timeline-content">
+                            <h3>Modern Infrastructure Redesign</h3>
+                            <p>Refreshed our technological stack to fully responsive, accessible frameworks, supporting next-gen trading architectures like MT5 and VertexFX 11.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-symbol">E</div>
+                        <div class="logo-text">ELP<span>Markets</span></div>
+                    </div>
+                    <p>Ellipsys Financial Markets (ELP Markets) is an ECN financial brokerage committed to legacy execution quality, regulatory safety, and technological innovation.</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Headquarters: Port Louis, Mauritius</p>
+                </div>
+                
+                <div>
+                    <h3 class="footer-links-title">Trading</h3>
+                    <ul class="footer-links" role="list">
+                        <li><a href="#">Forex Spreads</a></li>
+                        <li><a href="#">CFD Indices</a></li>
+                        <li><a href="#">Commodities Spot</a></li>
+                        <li><a href="#">Trading Hours</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-links-title">Regulatory</h3>
+                    <ul class="footer-links" role="list">
+                        <li><a href="about.html">About Ellipsys</a></li>
+                        <li><a href="#">FSC License Details</a></li>
+                        <li><a href="#">Risk Disclosures</a></li>
+                        <li><a href="#">Auditor & Compliance</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-links-title">Sitemap</h3>
+                    <nav class="sitemap-tree" aria-label="Footer Sitemap">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li>
+                                <span>Markets</span>
+                                <ul>
+                                    <li><a href="#">Forex</a></li>
+                                    <li><a href="#">CFDs</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact Support</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="footer-risk-warning">
+                <p><strong>Regulatory Warning:</strong> Ellipsys Financial Markets is regulated by the Financial Services Commission (FSC), Mauritius under Investment Dealer License No: C111010125. Trading Forex and Contract for Differences (CFDs) involves high risk. Your losses may exceed your deposits. Leverage can work against you as well as for you. Please ensure you fully understand the risks involved and take appropriate advice if necessary before registering.</p>
+            </div>
+            
+            <div class="footer-bottom flex-between">
+                <p>&copy; 2026 ELP Markets (Ellipsys Financial Markets). All rights reserved.</p>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#">Terms &amp; Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | ELP Markets | Global Customer Support</title>
+    <meta name="description" content="Get in touch with ELP Markets (Ellipsys). Contact our 24/5 global support desk for help with accounts, platforms, and institutional liquidity." />
+    
+    <!-- Meta tags for SEO & Social Media sharing -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Contact Us | ELP Markets | Global Customer Support" />
+    <meta property="og:description" content="Reach out to ELP Markets support. Find our office locations, support emails, phone numbers, and submit an encrypted contact request." />
+    <meta property="og:url" content="https://www.elpmarkets.com/contact-us/" />
+    <meta property="og:site_name" content="ELP Markets" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+        /* Specific contact layout elements */
+        .page-header {
+            padding: 140px 0 60px 0;
+            background: linear-gradient(180deg, #08090a 0%, #0c0e12 100%);
+            border-bottom: 1px solid var(--border-light);
+            text-align: center;
+        }
+        
+        .breadcrumbs {
+            display: inline-flex;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+        
+        .breadcrumbs a {
+            color: var(--text-secondary);
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--primary);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 60px;
+        }
+        
+        @media (max-width: 991px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+        
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .info-item {
+            display: flex;
+            gap: 20px;
+            padding: 24px;
+            border-radius: var(--radius-md);
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+        }
+        
+        .info-icon {
+            width: 44px;
+            height: 44px;
+            background-color: var(--primary-glow);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        
+        .info-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+        
+        .info-details h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+        
+        .info-details p, .info-details a {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .info-details a:hover {
+            color: var(--primary);
+        }
+
+        /* Form Container Details */
+        .form-card {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .form-control {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+            width: 100%;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-submit-btn {
+            align-self: flex-start;
+            padding: 14px 35px;
+            border: none;
+            width: auto;
+        }
+        
+        @media (max-width: 576px) {
+            .form-submit-btn {
+                width: 100%;
+            }
+        }
+        
+        /* Success Message Container */
+        .success-overlay {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 0;
+            animation: fadeIn 0.4s ease forwards;
+        }
+        
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            background-color: var(--success-glow);
+            border: 2px solid var(--success);
+            color: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.8rem;
+        }
+        
+        .success-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        
+        .success-overlay p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 320px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scrolling Ticker Tape -->
+    <section class="ticker-tape-container" aria-label="Live Market Rates">
+        <div class="ticker-tape-wrapper">
+            <div class="ticker-scroll">
+                <!-- Ticker items dynamically injected by app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Header Navigation -->
+    <header class="header" role="banner">
+        <div class="container flex-between">
+            <a href="index.html" class="logo" aria-label="ELP Markets Home">
+                <div class="logo-symbol">E</div>
+                <div class="logo-text">ELP<span>Markets</span></div>
+            </a>
+            
+            <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="nav-item-dropdown">
+                    <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Markets</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Forex Trading</a>
+                        <a href="#" class="dropdown-item">CFD Indices</a>
+                        <a href="#" class="dropdown-item">Commodities</a>
+                        <a href="#" class="dropdown-item">Futures Markets</a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">Platforms</a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">MetaTrader 5</a>
+                        <a href="#" class="dropdown-item">Vertex FX 11</a>
+                        <a href="#" class="dropdown-item">Zen Trader Web</a>
+                    </div>
+                </div>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link active">Contact Us</a>
+            </nav>
+            
+            <div class="header-ctas">
+                <a href="portal.html" class="btn btn-secondary btn-sm" aria-label="Login to Client Portal">Portal Login</a>
+                <a href="register.html" class="btn btn-primary btn-sm" aria-label="Open a Live Account">Open Account</a>
+            </div>
+            
+            <button class="mobile-nav-toggle" aria-label="Open mobile menu" aria-controls="mobile-nav-menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Panel Navigation -->
+    <div id="mobile-nav-menu" class="mobile-nav" aria-label="Mobile Navigation">
+        <button class="mobile-nav-close" aria-label="Close mobile menu">&times;</button>
+        <nav class="mobile-menu">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="#" class="mobile-link">Forex & CFDs</a>
+            <a href="#" class="mobile-link">Trading Platforms</a>
+            <a href="about.html" class="mobile-link">About Us</a>
+            <a href="contact.html" class="mobile-link active">Contact Us</a>
+        </nav>
+        <div class="mobile-ctas">
+            <a href="portal.html" class="btn btn-secondary">Portal Login</a>
+            <a href="register.html" class="btn btn-primary">Open Account</a>
+        </div>
+    </div>
+    <div class="overlay"></div>
+
+    <main id="main-content" role="main">
+        
+        <!-- Page Title & Breadcrumbs -->
+        <section class="page-header">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Contact Us</span>
+                </div>
+                <h1>Get in Touch</h1>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section">
+            <div class="container">
+                <div class="contact-grid">
+                    
+                    <!-- Contact Info Panel -->
+                    <div class="info-card animate-on-scroll">
+                        <span class="badge">Global Offices</span>
+                        <h2>Connect With Our Desk</h2>
+                        <p>Have questions about leverage parameters, ECN connectivity, or corporate registrations? Contact our client services department directly.</p>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+                            </div>
+                            <div class="info-details">
+                                <h3>Corporate Headquarters</h3>
+                                <p>Ellipsys Financial Markets<br>Port Louis, Mauritius</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </div>
+                            <div class="info-details">
+                                <h3>Support & Operations Desk</h3>
+                                <p><a href="mailto:support@elpmarkets.com">support@elpmarkets.com</a><br><a href="mailto:info@elpmarkets.com">info@elpmarkets.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            </div>
+                            <div class="info-details">
+                                <h3>Direct Phone Hotline</h3>
+                                <p><a href="tel:+2302100000">+230 210-0000</a><br>(Support hours 24/5 GMT)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form Card -->
+                    <div class="form-card animate-on-scroll delay-200">
+                        
+                        <!-- Real Interactive Form -->
+                        <form id="elp-contact-form" class="contact-form" action="#" method="POST" aria-label="Contact support request form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-firstname">First Name</label>
+                                    <input type="text" id="contact-firstname" class="form-control" placeholder="John" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-lastname">Last Name</label>
+                                    <input type="text" id="contact-lastname" class="form-control" placeholder="Doe" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-email">Corporate Email Address</label>
+                                <input type="email" id="contact-email" class="form-control" placeholder="john.doe@firm.com" required />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-phone">Phone Number (with Country Code)</label>
+                                <input type="tel" id="contact-phone" class="form-control" placeholder="+1 (555) 000-0000" />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-subject">Inquiry Department</label>
+                                <select id="contact-subject" class="form-control">
+                                    <option value="retail">Retail Account Support</option>
+                                    <option value="corporate">Institutional & Corporate Clients</option>
+                                    <option value="mam">MAM / Asset Management Solutions</option>
+                                    <option value="billing">Deposits & Withdrawals</option>
+                                    <option value="compliance">Regulatory & Compliance Queries</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-message">Detailed Inquiry Message</label>
+                                <textarea id="contact-message" class="form-control" placeholder="Please specify your trading inquiries or requirements..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary form-submit-btn">Send Encrypted Request</button>
+                        </form>
+                        
+                        <!-- Success Feedback -->
+                        <div id="elp-form-success" class="success-overlay">
+                            <div class="success-icon">✓</div>
+                            <h3>Inquiry Submitted Successfully</h3>
+                            <p>Thank you for reaching out. A relationship desk specialist has been allocated to your inquiry and will contact you within the next 4 working hours.</p>
+                            <button id="elp-reset-form-btn" class="btn btn-outline">Submit Another Request</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-symbol">E</div>
+                        <div class="logo-text">ELP<span>Markets</span></div>
+                    </div>
+                    <p>Ellipsys Financial Markets (ELP Markets) is an ECN financial brokerage committed to legacy execution quality, regulatory safety, and technological innovation.</p>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Headquarters: Port Louis, Mauritius</p>
+                </div>
+                
+                <div>
+                    <h3 class="footer-links-title">Trading</h3>
+                    <ul class="footer-links" role="list">
+                        <li><a href="#">Forex Spreads</a></li>
+                        <li><a href="#">CFD Indices</a></li>
+                        <li><a href="#">Commodities Spot</a></li>
+                        <li><a href="#">Trading Hours</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-links-title">Regulatory</h3>
+                    <ul class="footer-links" role="list">
+                        <li><a href="about.html">About Ellipsys</a></li>
+                        <li><a href="#">FSC License Details</a></li>
+                        <li><a href="#">Risk Disclosures</a></li>
+                        <li><a href="#">Auditor & Compliance</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-links-title">Sitemap</h3>
+                    <nav class="sitemap-tree" aria-label="Footer Sitemap">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li>
+                                <span>Markets</span>
+                                <ul>
+                                    <li><a href="#">Forex</a></li>
+                                    <li><a href="#">CFDs</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact Support</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="footer-risk-warning">
+                <p><strong>Regulatory Warning:</strong> Ellipsys Financial Markets is regulated by the Financial Services Commission (FSC), Mauritius under Investment Dealer License No: C111010125. Trading Forex and Contract for Differences (CFDs) involves high risk. Your losses may exceed your deposits. Leverage can work against you as well as for you. Please ensure you fully understand the risks involved and take appropriate advice if necessary before registering.</p>
+            </div>
+            
+            <div class="footer-bottom flex-between">
+                <p>&copy; 2026 ELP Markets (Ellipsys Financial Markets). All rights reserved.</p>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#">Terms &amp; Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App JavaScript & Custom Form Handler -->
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('elp-contact-form');
+            const successDiv = document.getElementById('elp-form-success');
+            const resetBtn = document.getElementById('elp-reset-form-btn');
+            
+            if (form && successDiv) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Simple submission animation
+                    const submitBtn = form.querySelector('.form-submit-btn');
+                    submitBtn.textContent = 'Encrypting & Sending...';
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = '0.6';
+                    
+                    setTimeout(() => {
+                        form.style.display = 'none';
+                        successDiv.style.display = 'flex';
+                    }, 1200);
+                });
+            }
+            
+            if (resetBtn && form && successDiv) {
+                resetBtn.addEventListener('click', () => {
+                    successDiv.style.display = 'none';
+                    form.style.display = 'flex';
+                    form.reset();
+                    
+                    const submitBtn = form.querySelector('.form-submit-btn');
+                    submitBtn.textContent = 'Send Encrypted Request';
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

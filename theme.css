@@ -389,16 +389,21 @@ ul {
     height: var(--header-height);
     width: 100%;
     position: fixed;
-    top: 0;
+    top: 48px; /* Offset by ticker tape height */
     left: 0;
     z-index: 100;
-    transition: var(--transition-normal);
+    background-color: rgba(6, 7, 9, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    transition: top var(--transition-normal), height var(--transition-normal), background-color var(--transition-normal);
 }
 
 .header.scrolled {
-    background-color: rgba(6, 7, 9, 0.9);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    top: 0; /* Slide up when ticker is scrolled out of view */
+    background-color: rgba(6, 7, 9, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-light);
     height: 70px;
 }
